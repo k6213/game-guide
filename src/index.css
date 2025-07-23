@@ -1,0 +1,36 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌿 기본 폰트 설정 (Tailwind 기준에 맞춰 root에만 정의) */
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* 🖥️ 다크모드 & 라이트모드 대응 (선택사항) */
+@media (prefers-color-scheme: light) {
+    :root {
+        color-scheme: light;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* 🎯 Tailwind 기준과 충돌하는 직접 설정은 최소화하는 것이 좋습니다 */
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    @apply bg-white text-black dark:bg-zinc-900 dark:text-white;
+}
+
+/* 링크 스타일 개선 (Tailwind 추천 방식으로) */
+a {
+    @apply text-blue-500 hover:text-blue-700 underline;
+}
+
+/* 버튼은 Tailwind 클래스를 직접 사용하는 것을 추천합니다 */
