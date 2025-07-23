@@ -6,7 +6,8 @@ export async function getGameRanking({
     stores,
     tags
 }) {
-    const API_KEY = "bacdb2871176482e9f1dcbc6e06b4de2";
+    // 환경변수에서 API 키 불러오기
+    const API_KEY = import.meta.env.VITE_RAWG_API_KEY;
     let url = `https://api.rawg.io/api/games?key=${API_KEY}&page_size=9&page=${page}`;
 
     if (ordering) url += `&ordering=${ordering}`;

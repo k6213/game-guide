@@ -1,4 +1,6 @@
-﻿const API_KEY = "AIzaSyBY9blAjPWbURgIIhF7laQR7aBb066hURQ"; // 실제 키로 교체
+﻿// src/lib/gemini.js (혹은 관련 js/ts 파일)
+
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 export async function getGeminiGuide(question) {
     const res = await fetch(
@@ -7,7 +9,7 @@ export async function getGeminiGuide(question) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "X-goog-api-key": API_KEY, // 🔥 중요: 쿼리 문자열이 아님
+                "X-goog-api-key": API_KEY,
             },
             body: JSON.stringify({
                 contents: [
