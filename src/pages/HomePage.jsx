@@ -119,39 +119,30 @@ export default function HomePage() {
                 {loading ? (
                     <div className="text-center text-gray-400">로딩 중...</div>
                 ) : (
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-                        {guides.length === 0 ? (
-                            <div className="col-span-3 text-center text-gray-500">
-                                {query
-                                    ? "검색 결과가 없습니다."
-                                    : "인기 공략이 없습니다."
-                                }
-                            </div>
-                        ) : (
-                            guides.map((guide) => (
-                                <div
-                                    key={guide._id || guide.id}
-                                    className="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:scale-105 transition"
-                                >
-                                    <div className="p-4">
-                                        <h3 className="text-xl font-semibold mb-2">
-                                            {guide.title}
-                                        </h3>
-                                        <p className="text-gray-300 text-sm">{guide.summary}</p>
-                                        <div className="flex items-center gap-2 mt-2 text-yellow-400 text-xs">
-                                            👍 {guide.likes || 0} 좋아요
-                                        </div>
-                                        <Link
-                                            to={`/guide/${guide._id || guide.id}`}
-                                            className="inline-block mt-4 text-yellow-400 hover:underline text-sm"
-                                        >
-                                            자세히 보기 →
-                                        </Link>
-                                    </div>
+                        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+                            {guides.length === 0 ? (
+                                <div className="col-span-3 text-center text-gray-500">
+                                    {query ? "검색 결과가 없습니다." : "인기 공략이 없습니다."}
                                 </div>
-                            ))
-                        )}
-                    </div>
+                            ) : (
+                                guides.map((guide) => (
+                                    <Link
+                                        key={guide._id || guide.id}
+                                        to={`/guides/edit/${guide._id || guide.id}`}
+                                        className="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:scale-105 transition block cursor-pointer"
+                                        style={{ textDecoration: "none", color: "inherit" }}
+                                    >
+                                        <div className="p-4">
+                                            <h3 className="text-xl font-semibold mb-2">{guide.title}</h3>
+                                            <p className="text-gray-300 text-sm">{guide.summary}</p>
+                                            <div className="flex items-center gap-2 mt-2 text-yellow-400 text-xs">
+                                                👍 {guide.likes || 0} 좋아요
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))
+                            )}
+                        </div>
                 )}
             </section>
         </div>
