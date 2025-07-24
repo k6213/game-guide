@@ -133,11 +133,6 @@ export default function HomePage() {
                                     key={guide._id || guide.id}
                                     className="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:scale-105 transition"
                                 >
-                                    <img
-                                        src={guide.imageUrl || guide.image}
-                                        alt={guide.title}
-                                        className="w-full h-48 object-cover"
-                                    />
                                     <div className="p-4">
                                         <h3 className="text-xl font-semibold mb-2">
                                             {guide.title}

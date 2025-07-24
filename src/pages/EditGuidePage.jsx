@@ -1,6 +1,8 @@
 ﻿import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+const API_BASE = import.meta.env.VITE_API_URL || "";
+
 export default function GuideEditPage() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -10,7 +12,7 @@ export default function GuideEditPage() {
     const imgInput = useRef();
 
     useEffect(() => {
-        fetch(`/api/guides/${id}`)
+        fetch(`${API_BASE}/api/guides/${id}`)
             .then(res => res.json())
             .then(setGuide)
             .finally(() => setLoading(false));
@@ -23,12 +25,9 @@ export default function GuideEditPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = localStorage.getItem("token");
-
         // 이미지 업로드(선택)
         let imageUrl = guide.imageUrl;
         if (imgFile) {
-            // 실제 서비스는 서버에 파일을 올리고, imageUrl을 받아와야 함 (여기선 base64 예시)
             const reader = new FileReader();
             reader.onloadend = async () => {
                 imageUrl = reader.result;
@@ -43,7 +42,7 @@ export default function GuideEditPage() {
     // 수정 fetch
     const updateGuide = async (imageUrl) => {
         const token = localStorage.getItem("token");
-        const res = await fetch(`/api/guides/${id}`, {
+        const res = await fetch(`${API_BASE}/api/guides/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -51,7 +50,7 @@ export default function GuideEditPage() {
             },
             body: JSON.stringify({
                 ...guide,
-                imageUrl // base64 or URL (실제 서비스는 서버에서 URL로 관리)
+                imageUrl
             })
         });
         if (res.ok) {
@@ -121,3 +120,4 @@ export default function GuideEditPage() {
         </div>
     );
 }
+
