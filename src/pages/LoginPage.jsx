@@ -17,7 +17,7 @@ export default function LoginPage() {
         setMessage("");
         try {
             // 백엔드 전체 URL 사용!
-            const res = await fetch(`${API_BASE}/api/login`, {
+            const res = await fetch(`${API_BASE}/api/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
