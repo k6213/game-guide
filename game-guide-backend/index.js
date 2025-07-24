@@ -10,8 +10,7 @@ const app = express();
 // 🚩 CORS 설정 - 개발/배포 모두 지원
 const allowedOrigins = [
     "http://localhost:5173",           // 개발용
-    "https://game-guide-taupe.vercel.app", // 배포용 (실제 프론트 URL로 변경)
-    "https://game-guide-kanghos-projects-dd73d55a.vercel.app"
+    "https://game-guide-git-master-kanghos-projects-dd73d55a.vercel.app"
 ];
 app.use(cors({
     origin: function (origin, callback) {
