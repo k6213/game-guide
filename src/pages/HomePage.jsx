@@ -2,6 +2,9 @@
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react"; // lucide-react 설치 필요 (npm i lucide-react)
 
+// .env의 API 주소 가져오기
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function HomePage() {
     const [guides, setGuides] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -13,9 +16,9 @@ export default function HomePage() {
         setLoading(true);
         let url = "";
         if (keyword.trim() === "") {
-            url = "/api/guides/popular?limit=3";
+            url = `${API_BASE}/api/guides/popular?limit=3`;
         } else {
-            url = `/api/guides/search?query=${encodeURIComponent(keyword)}&limit=3`;
+            url = `${API_BASE}/api/guides/search?query=${encodeURIComponent(keyword)}&limit=3`;
         }
         try {
             const res = await fetch(url);
@@ -97,21 +100,20 @@ export default function HomePage() {
                     <button
                         type="submit"
                         className={`
-        flex items-center gap-2 px-6 py-3
-        text-lg font-bold
-        rounded-r-2xl
-        bg-gradient-to-r from-yellow-400 to-yellow-600
-        text-black shadow-lg
-        transition
-        hover:scale-105 hover:from-yellow-500 hover:to-yellow-700
-        focus:outline-none
-        h-[48px]   // 버튼 높이 고정! (입력창 높이와 맞추기)
-    `}
+                            flex items-center gap-2 px-6 py-3
+                            text-lg font-bold
+                            rounded-r-2xl
+                            bg-gradient-to-r from-yellow-400 to-yellow-600
+                            text-black shadow-lg
+                            transition
+                            hover:scale-105 hover:from-yellow-500 hover:to-yellow-700
+                            focus:outline-none
+                            h-[48px]   // 버튼 높이 고정! (입력창 높이와 맞추기)
+                        `}
                     >
                         <Search size={20} className="inline" />
                         <span className="whitespace-nowrap">검색</span>
                     </button>
-
                 </form>
                 {/* 로딩 or 데이터 */}
                 {loading ? (
@@ -160,5 +162,3 @@ export default function HomePage() {
         </div>
     );
 }
-
-

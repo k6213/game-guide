@@ -1,6 +1,9 @@
 ﻿import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
+// .env 환경변수에서 API 베이스 URL 읽기
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function SignupPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -11,13 +14,13 @@ export default function SignupPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage("");
-        // 비밀번호 일치 검사
         if (password !== passwordConfirm) {
             setMessage("비밀번호가 일치하지 않습니다.");
             return;
         }
         try {
-            const res = await fetch("/api/auth/register", {
+            // 배포환경/개발환경 모두 지원
+            const res = await fetch(`${API_BASE}/api/auth/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
@@ -39,7 +42,6 @@ export default function SignupPage() {
             <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h1 className="text-3xl font-bold text-center mb-6 text-yellow-400">회원가입</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    {/* 아이디 */}
                     <div>
                         <label className="block text-sm font-medium mb-1">아이디</label>
                         <input
@@ -51,7 +53,6 @@ export default function SignupPage() {
                             required
                         />
                     </div>
-                    {/* 비밀번호 */}
                     <div>
                         <label className="block text-sm font-medium mb-1">비밀번호</label>
                         <input
@@ -63,7 +64,6 @@ export default function SignupPage() {
                             required
                         />
                     </div>
-                    {/* 비밀번호 확인 */}
                     <div>
                         <label className="block text-sm font-medium mb-1">비밀번호 확인</label>
                         <input
@@ -95,4 +95,3 @@ export default function SignupPage() {
         </div>
     );
 }
-

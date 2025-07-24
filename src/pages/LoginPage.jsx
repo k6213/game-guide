@@ -2,18 +2,22 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useUser } from "@/contexts/UserContext";
 
+// .env 환경변수에서 API 베이스 URL 읽기
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
-    const { setUser } = useUser(); // ✅ 
+    const { setUser } = useUser();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage("");
         try {
-            const res = await fetch("/api/login", {
+            // 백엔드 전체 URL 사용!
+            const res = await fetch(`${API_BASE}/api/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
@@ -23,7 +27,7 @@ export default function LoginPage() {
 
             if (res.ok && data.token) {
                 localStorage.setItem("token", data.token);
-                setUser(data.user); // ✅ 로그인 성공 시 user 저장!
+                setUser(data.user);
                 setMessage("로그인 성공! 잠시 후 이동합니다.");
                 setTimeout(() => navigate("/"), 1500);
             } else {
@@ -79,4 +83,5 @@ export default function LoginPage() {
         </div>
     );
 }
+
 

@@ -4,18 +4,21 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useUser } from "@/contexts/UserContext";
 
+// 환경변수에서 API 베이스 URL 읽기
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function GuideDetailPage() {
     const { id } = useParams();
     const { user } = useUser();
     const navigate = useNavigate();
     const [guide, setGuide] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [comment, setComment] = useState("");           // 댓글 입력 상태
+    const [comment, setComment] = useState(""); // 댓글 입력 상태
     const [commentLoading, setCommentLoading] = useState(false);
 
     // 공략 가져오기
     const fetchGuide = () => {
-        fetch(`/api/guides/${id}`)
+        fetch(`${API_BASE}/api/guides/${id}`)
             .then(res => res.json())
             .then(data => {
                 setGuide(data);
@@ -29,14 +32,16 @@ export default function GuideDetailPage() {
         // eslint-disable-next-line
     }, [id]);
 
-    if (loading) return (
-        <div className="min-h-screen flex items-center justify-center text-white">불러오는 중...</div>
-    );
-    if (!guide || guide.error) return (
-        <div className="min-h-screen flex items-center justify-center text-white">
-            {guide?.error || "존재하지 않는 공략글입니다."}
-        </div>
-    );
+    if (loading)
+        return (
+            <div className="min-h-screen flex items-center justify-center text-white">불러오는 중...</div>
+        );
+    if (!guide || guide.error)
+        return (
+            <div className="min-h-screen flex items-center justify-center text-white">
+                {guide?.error || "존재하지 않는 공략글입니다."}
+            </div>
+        );
 
     const showEdit = user && user.username === guide.author;
 
@@ -44,9 +49,9 @@ export default function GuideDetailPage() {
     const handleLike = async () => {
         if (!user) return alert("로그인 필요!");
         const token = localStorage.getItem("token");
-        const res = await fetch(`/api/guides/${id}/like`, {
+        const res = await fetch(`${API_BASE}/api/guides/${id}/like`, {
             method: "POST",
-            headers: { "Authorization": `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
         if (data.ok) fetchGuide();
@@ -58,11 +63,11 @@ export default function GuideDetailPage() {
         if (!comment.trim()) return;
         setCommentLoading(true);
         const token = localStorage.getItem("token");
-        const res = await fetch(`/api/guides/${id}/comments`, {
+        const res = await fetch(`${API_BASE}/api/guides/${id}/comments`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ text: comment }),
         });
@@ -77,9 +82,9 @@ export default function GuideDetailPage() {
         const yes = window.confirm("댓글을 삭제할까요?");
         if (!yes) return;
         const token = localStorage.getItem("token");
-        const res = await fetch(`/api/guides/${id}/comments/${idx}`, {
+        const res = await fetch(`${API_BASE}/api/guides/${id}/comments/${idx}`, {
             method: "DELETE",
-            headers: { "Authorization": `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${token}` }
         });
         if (res.ok) fetchGuide();
         else alert("댓글 삭제 실패");
@@ -180,7 +185,3 @@ export default function GuideDetailPage() {
         </div>
     );
 }
-
-
-
-

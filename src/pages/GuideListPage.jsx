@@ -1,13 +1,16 @@
 ﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// 환경변수에서 API 베이스 URL 읽기
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function GuideListPage() {
     const [guides, setGuides] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // 서버에서 최신 공략글 목록 fetch
-        fetch("/api/guides")
+        fetch(`${API_BASE}/api/guides`)
             .then(res => res.json())
             .then(data => {
                 setGuides(data);

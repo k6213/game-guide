@@ -2,13 +2,16 @@
 import { Link } from "react-router-dom";
 import { useUser } from "@/contexts/UserContext";
 
+// 환경변수에서 API 베이스 URL 읽기
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function MyGuidesPage() {
     const { user } = useUser();
     const [guides, setGuides] = useState([]);
 
     useEffect(() => {
         if (user) {
-            fetch(`/api/guides?author=${encodeURIComponent(user.username)}`)
+            fetch(`${API_BASE}/api/guides?author=${encodeURIComponent(user.username)}`)
                 .then(res => res.json())
                 .then(setGuides);
         }
@@ -18,7 +21,7 @@ export default function MyGuidesPage() {
     const handleDelete = async (id) => {
         if (!window.confirm("정말 삭제하시겠습니까?")) return;
         const token = localStorage.getItem("token");
-        const res = await fetch(`/api/guides/${id}`, {
+        const res = await fetch(`${API_BASE}/api/guides/${id}`, {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}` }
         });

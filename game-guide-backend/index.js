@@ -6,7 +6,27 @@ const authRouter = require("./routes/auth");
 const guideRouter = require("./routes/guides");
 
 const app = express();
-app.use(cors());
+
+// 🚩 CORS 설정 - 개발/배포 모두 지원
+const allowedOrigins = [
+    "http://localhost:5173",           // 개발용
+    "https://YOUR_FRONTEND.vercel.app" // 배포용 (실제 프론트 URL로 변경)
+];
+app.use(cors({
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        } else {
+            return callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
