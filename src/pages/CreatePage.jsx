@@ -3,16 +3,17 @@ import { getGeminiGuide } from "@/lib/gemini";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function CreatePage() {
     const [question, setQuestion] = useState("");
-    const [game, setGame] = useState("");         // 추가: 게임명 입력 필드
+    const [game, setGame] = useState("");
     const [guide, setGuide] = useState("");
     const [loading, setLoading] = useState(false);
 
     const saveGuide = async () => {
         try {
             const token = localStorage.getItem("token");
-            // 필수값 체크
             if (!game.trim()) {
                 alert("게임명을 입력하세요.");
                 return;
@@ -21,7 +22,7 @@ export default function CreatePage() {
                 alert("생성된 공략이 없습니다!");
                 return;
             }
-            const res = await fetch("/api/guides", {
+            const res = await fetch(`${API_BASE}/api/guides`, { // ← 변경!
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -30,8 +31,8 @@ export default function CreatePage() {
                 body: JSON.stringify({
                     title: question.slice(0, 20) + "...",
                     summary: guide.slice(0, 60) + "...",
-                    full: guide,      // 👈 반드시 추가!
-                    game: game,       // 👈 반드시 추가!
+                    full: guide,
+                    game: game,
                 }),
             });
             const data = await res.json();

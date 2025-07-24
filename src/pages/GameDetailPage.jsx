@@ -1,10 +1,12 @@
 ﻿import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+// ✅ 환경변수로부터 API키 읽기
+const API_KEY = import.meta.env.VITE_RAWG_API_KEY;
+
 export default function GameDetailPage() {
     const { id } = useParams();
     const [game, setGame] = useState(null);
-    const API_KEY = "bacdb2871176482e9f1dcbc6e06b4de2";
 
     useEffect(() => {
         fetch(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
@@ -74,7 +76,6 @@ export default function GameDetailPage() {
                                 <a
                                     key={s.store.id}
                                     href={
-                                        // RAWG에 공식 url 필드가 없는 경우도 있어 대체로 Steam 등 직접 링크
                                         s.url ||
                                         (s.store.domain
                                             ? `https://${s.store.domain}/app/${game.slug}`
@@ -91,9 +92,9 @@ export default function GameDetailPage() {
                             "정보 없음"
                         )}
                     </p>
-
                 </section>
             </div>
         </div>
     );
 }
+
