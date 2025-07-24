@@ -20,4 +20,19 @@ router.post("/register", async (req, res) => {
     res.json({ ok: true, msg: "회원가입 성공" });
 });
 
+// 로그인 (POST /api/auth/login)
+router.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+    if (!username || !password) return res.status(400).json({ error: "정보 누락" });
+
+    // DB에서 유저 조회
+    const user = await User.findOne({ username });
+    if (!user || user.password !== password) {
+        return res.status(400).json({ error: "아이디 또는 비밀번호가 일치하지 않습니다." });
+    }
+
+    // (실전에서는 JWT 등 토큰 발급!)
+    res.json({ ok: true, user: { username: user.username }, token: "demo-token" });
+});
+
 module.exports = router;
