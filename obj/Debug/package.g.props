@@ -13,6 +13,7 @@
     <PackageJsonDependenciesBcryptjs Condition="$(PackageJsonDependenciesBcryptjs) == ''">^3.0.2</PackageJsonDependenciesBcryptjs>
     <PackageJsonDependenciesEmailjsCom Condition="$(PackageJsonDependenciesEmailjsCom) == ''">^3.2.0</PackageJsonDependenciesEmailjsCom>
     <PackageJsonDependenciesI18next Condition="$(PackageJsonDependenciesI18next) == ''">^25.3.2</PackageJsonDependenciesI18next>
+    <PackageJsonDependenciesI18nextBrowserLanguagedetector Condition="$(PackageJsonDependenciesI18nextBrowserLanguagedetector) == ''">^8.2.0</PackageJsonDependenciesI18nextBrowserLanguagedetector>
     <PackageJsonDependenciesI18nextHttpBackend Condition="$(PackageJsonDependenciesI18nextHttpBackend) == ''">^3.0.2</PackageJsonDependenciesI18nextHttpBackend>
     <PackageJsonDependenciesJsonwebtoken Condition="$(PackageJsonDependenciesJsonwebtoken) == ''">^9.0.2</PackageJsonDependenciesJsonwebtoken>
     <PackageJsonDependenciesLucideReact Condition="$(PackageJsonDependenciesLucideReact) == ''">^0.525.0</PackageJsonDependenciesLucideReact>
