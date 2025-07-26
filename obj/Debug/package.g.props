@@ -12,11 +12,13 @@
     <PackageJsonDependenciesTailwindcssTypography Condition="$(PackageJsonDependenciesTailwindcssTypography) == ''">^0.5.16</PackageJsonDependenciesTailwindcssTypography>
     <PackageJsonDependenciesBcryptjs Condition="$(PackageJsonDependenciesBcryptjs) == ''">^3.0.2</PackageJsonDependenciesBcryptjs>
     <PackageJsonDependenciesEmailjsCom Condition="$(PackageJsonDependenciesEmailjsCom) == ''">^3.2.0</PackageJsonDependenciesEmailjsCom>
+    <PackageJsonDependenciesI18next Condition="$(PackageJsonDependenciesI18next) == ''">^25.3.2</PackageJsonDependenciesI18next>
     <PackageJsonDependenciesJsonwebtoken Condition="$(PackageJsonDependenciesJsonwebtoken) == ''">^9.0.2</PackageJsonDependenciesJsonwebtoken>
     <PackageJsonDependenciesLucideReact Condition="$(PackageJsonDependenciesLucideReact) == ''">^0.525.0</PackageJsonDependenciesLucideReact>
     <PackageJsonDependenciesOpenai Condition="$(PackageJsonDependenciesOpenai) == ''">^5.10.1</PackageJsonDependenciesOpenai>
     <PackageJsonDependenciesReact Condition="$(PackageJsonDependenciesReact) == ''">^19.1.0</PackageJsonDependenciesReact>
     <PackageJsonDependenciesReactDom Condition="$(PackageJsonDependenciesReactDom) == ''">^19.1.0</PackageJsonDependenciesReactDom>
+    <PackageJsonDependenciesReactI18next Condition="$(PackageJsonDependenciesReactI18next) == ''">^15.6.1</PackageJsonDependenciesReactI18next>
     <PackageJsonDependenciesReactMarkdown Condition="$(PackageJsonDependenciesReactMarkdown) == ''">^10.1.0</PackageJsonDependenciesReactMarkdown>
     <PackageJsonDependenciesReactRouterDom Condition="$(PackageJsonDependenciesReactRouterDom) == ''">^7.7.0</PackageJsonDependenciesReactRouterDom>
     <PackageJsonDependenciesRemarkGfm Condition="$(PackageJsonDependenciesRemarkGfm) == ''">^4.0.1</PackageJsonDependenciesRemarkGfm>

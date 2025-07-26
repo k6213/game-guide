@@ -13,11 +13,13 @@
     "@tailwindcss/typography": "^0.5.16",
     "bcryptjs": "^3.0.2",
     "emailjs-com": "^3.2.0",
+    "i18next": "^25.3.2",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.525.0",
     "openai": "^5.10.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-i18next": "^15.6.1",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.7.0",
     "remark-gfm": "^4.0.1"
