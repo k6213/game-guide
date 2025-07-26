@@ -1,0 +1,15 @@
+{
+  "homepage": {
+    "title": "모두의 공략집",
+    "desc": "AI가 생성한 최신 게임 공략 모음",
+    "start": "지금 바로 시작하기",
+    "popular": "🔥 인기 공략 모음",
+    "search_result": "🔍 \"{{query}}\" 검색 결과",
+    "search_placeholder": "찾고 싶은 공략을 검색하세요...",
+    "search": "검색",
+    "loading": "로딩 중...",
+    "no_result": "검색 결과가 없습니다.",
+    "no_popular": "인기 공략이 없습니다.",
+    "like": "좋아요"
+  }
+}

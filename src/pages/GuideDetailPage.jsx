@@ -90,10 +90,6 @@ export default function GuideDetailPage() {
         else alert("댓글 삭제 실패");
     };
 
-    // ⭐️ 신고 버튼 (임시)
-    const handleReport = () => {
-        alert("🚨 신고가 접수되었습니다! (실제 신고 기능은 추가 구현 필요)");
-    };
 
     return (
         <div className="min-h-screen bg-gray-900 text-white px-4 pt-28 pb-10">

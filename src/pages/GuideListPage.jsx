@@ -34,25 +34,23 @@ export default function GuideListPage() {
                         <div className="text-center text-gray-400">아직 작성된 공략글이 없습니다.</div>
                     ) : (
                         guides.map((guide, idx) => (
-                            <div
+                            <Link
                                 key={guide._id || idx}
-                                className="bg-gray-800 rounded-lg shadow-lg p-6 hover:bg-gray-700 transition duration-300"
+                                to={`/guide/${guide._id || guide.id}`}
+                                className="block"
+                                style={{ textDecoration: "none", color: "inherit" }}
                             >
-                                <div className="flex justify-between items-center mb-2">
-                                    <span className="text-sm text-gray-400">{guide.game}</span>
-                                    <span className="text-sm text-gray-500">{guide.createdAt?.slice(0, 10) || ""}</span>
+                                <div
+                                    className="bg-gray-800 rounded-lg shadow-lg p-6 hover:bg-gray-700 transition duration-300 cursor-pointer"
+                                >
+                                    <div className="flex justify-between items-center mb-2">
+                                        <span className="text-sm text-gray-400">{guide.game}</span>
+                                        <span className="text-sm text-gray-500">{guide.createdAt?.slice(0, 10) || ""}</span>
+                                    </div>
+                                    <h2 className="text-2xl font-bold mb-2">{guide.title}</h2>
+                                    <p className="text-gray-300">{guide.summary}</p>
                                 </div>
-                                <h2 className="text-2xl font-bold mb-2">{guide.title}</h2>
-                                <p className="text-gray-300">{guide.summary}</p>
-                                <div className="text-right mt-4">
-                                    <Link
-                                        to={`/guide/${guide._id || guide.id}`}
-                                        className="inline-block mt-4 text-yellow-400 hover:underline text-sm"
-                                    >
-                                        자세히 보기 →
-                                    </Link>
-                                </div>
-                            </div>
+                            </Link>
                         ))
                     )}
                 </div>
