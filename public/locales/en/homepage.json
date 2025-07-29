@@ -1,15 +1,13 @@
 {
-  "homepage": {
-    "title": "Everyone's Game Guide",
-    "desc": "The latest AI-generated game guides",
-    "start": "Start Now",
-    "popular": "🔥 Popular Guides",
-    "search_result": "🔍 Search results for \"{{query}}\"",
-    "search_placeholder": "Search for a guide...",
-    "search": "Search",
-    "loading": "Loading...",
-    "no_result": "No results found.",
-    "no_popular": "No popular guides.",
-    "like": "Likes"
-  }
+  "title": "Everyone's Game Guide",
+  "desc": "The latest AI-generated game guides",
+  "start": "Start Now",
+  "popular": "🔥 Popular Guides",
+  "search_result": "🔍 Search results for \"{{query}}\"",
+  "search_placeholder": "Search for a guide...",
+  "search": "Search",
+  "loading": "Loading...",
+  "no_result": "No results found.",
+  "no_popular": "No popular guides.",
+  "like": "Likes"
 }

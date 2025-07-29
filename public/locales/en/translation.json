@@ -1,12 +1,21 @@
 {
-  "common": {
-    "home": "Home",
-    "game_list": "Game List",
-    "guides": "Guides",
-    "create_guide": "Create Guide",
-    "support": "Support",
-    "my_guides": "My Guides",
-    "login": "Login",
-    "logout": "Logout"
-  }
+  "home": "Home",
+  "game_list": "Game List",
+  "guides": "Guides",
+  "create_guide": "Create Guide",
+  "support": "Support",
+  "my_guides": "My Guides",
+  "login": "Login",
+  "logout": "Logout",
+  "profile": "Profile",
+  "edit": "Edit",
+  "delete": "Delete",
+  "save": "Save",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "back": "Back",
+  "submit": "Submit",
+  "required": "Required",
+  "error": "An error occurred.",
+  "not_found": "Not found."
 }
