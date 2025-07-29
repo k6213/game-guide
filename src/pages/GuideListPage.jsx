@@ -36,7 +36,7 @@ export default function GuideListPage() {
                         guides.map((guide, idx) => (
                             <Link
                                 key={guide._id || idx}
-                                to={`/guide/${guide._id || guide.id}`}
+                                to={`/guides/${guide._id || guide.id}`}
                                 className="block"
                                 style={{ textDecoration: "none", color: "inherit" }}
                             >
