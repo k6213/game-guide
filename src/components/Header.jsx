@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export default function Header() {
     const navigate = useNavigate();
     const { user, setUser } = useUser();
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation(); // translation namespace(default)
 
     // 로그아웃 함수
     const handleLogout = () => {
@@ -31,27 +31,29 @@ export default function Header() {
                     </span>
                 </Link>
 
+                {/* 네비게이션 */}
                 <nav className="hidden md:flex space-x-6 text-sm font-medium">
                     {[
-                        { name: "홈", path: "/" },
-                        { name: "게임종류", path: "/rankings" },
-                        { name: "공략 모음", path: "/guides" },
-                        { name: "공략 작성", path: "/create" },
-                        { name: "고객지원", path: "/support" },
-                        ...(user ? [{ name: "마이공략집", path: "/my-guides" }] : []),
+                        { key: "home", path: "/" },
+                        { key: "game_list", path: "/rankings" },
+                        { key: "guides", path: "/guides" },
+                        { key: "create_guide", path: "/create" },
+                        { key: "support", path: "/support" },
+                        ...(user ? [{ key: "my_guides", path: "/my-guides" }] : []),
                     ].map((item) => (
                         <Link
                             key={item.path}
                             to={item.path}
                             className="no-underline hover:no-underline text-white hover:text-yellow-400 transition"
                         >
-                            {item.name}
+                            {t(item.key)}
                         </Link>
                     ))}
                 </nav>
 
+                {/* 오른쪽: 언어 & 로그인 */}
                 <div className="flex items-center space-x-3">
-                    {/* ✅ 언어 전환 버튼 */}
+                    {/* 언어전환 */}
                     <div className="flex items-center gap-1 mr-2">
                         <button
                             onClick={() => handleLang('ko')}
@@ -67,15 +69,15 @@ export default function Header() {
                             EN
                         </button>
                     </div>
-                    {/* ✅ 로그인 상태에 따라 버튼 분기 */}
+                    {/* 로그인/아웃 */}
                     {user ? (
                         <>
-                            <span className="text-yellow-400 font-bold">{user.username} 님</span>
+                            <span className="text-yellow-400 font-bold">{user.username}</span>
                             <button
                                 onClick={handleLogout}
                                 className="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-4 py-2 rounded-md shadow transition"
                             >
-                                로그아웃
+                                {t("logout")}
                             </button>
                         </>
                     ) : (
@@ -83,7 +85,7 @@ export default function Header() {
                             onClick={() => navigate("/login")}
                             className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded-md shadow transition"
                         >
-                            로그인
+                            {t("login")}
                         </button>
                     )}
                 </div>
@@ -91,7 +93,6 @@ export default function Header() {
         </header>
     );
 }
-
 
 
 
