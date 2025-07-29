@@ -1,0 +1,12 @@
+{
+  "common": {
+    "home": "홈",
+    "game_list": "게임종류",
+    "guides": "공략 모음",
+    "create_guide": "공략 작성",
+    "support": "고객지원",
+    "my_guides": "마이공략집",
+    "login": "로그인",
+    "logout": "로그아웃"
+  }
+}

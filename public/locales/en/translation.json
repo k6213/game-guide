@@ -1,0 +1,12 @@
+{
+  "common": {
+    "home": "Home",
+    "game_list": "Game List",
+    "guides": "Guides",
+    "create_guide": "Create Guide",
+    "support": "Support",
+    "my_guides": "My Guides",
+    "login": "Login",
+    "logout": "Logout"
+  }
+}
